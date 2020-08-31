@@ -1,0 +1,47 @@
+<!-- Web app that utilizes Rest API to obtain weather information from OpenWeatherMap.com. User can click the temperature value to change between Celsius to Fahrenheit and vice-versa.  -->
+
+<html lang = 'en'>
+<head>
+	<meta charset = "UTF-8">
+	<title>Weather Application in Vanilla JS</title>
+	<link rel = 'stylesheet' href = 'font/Rimouski.css'>
+	<link rel = 'stylesheet' href = 'style.css'>
+</head>
+<body>
+	<div class = 'container'>
+		<div class = 'app-title'>
+			<p>Weather App in JS</p>
+		</div>
+		
+		<div class = 'notification'></div>
+		
+		<div class = 'weather-container'>
+			<div class = 'weather-image'>
+				<img src = "icons/unknown.png" alt = ''> <!-- set default image-->
+			</div>
+			<div class = 'temperature-value'>
+				<p> - °<span>c</span></p>
+			</div>
+			<div class = 'temperature-desc'>
+				<p>--</p>
+			</div>
+			<div class = 'current-location'>
+				<p>--</p>
+			</div>
+			<div class = 'additional-data-container'>
+				<div class = 'pressure'>
+					<p>--</p>
+				</div>
+				<div class = 'humidity'>
+					<p>--</p>
+				</div>
+				<div class = 'windSpeed'>
+					<p>--</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src = 'config.js'></script>
+	<script type="text/javascript" src = "app.js"></script>
+</body>
+</html>
