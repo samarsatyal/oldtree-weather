@@ -145,3 +145,21 @@ body{
 	margin: 0;
 	padding-bottom: 3px;
 }
+
+.zip-container{
+	display: block;
+	margin: 10px auto;
+	border-radius: 20px;
+	background-color: #50afd2;
+	box-shadow: 5px 10px #534364;
+	text-align: center;
+}
+
+.zip-container form{
+	padding: 20px;
+}
+
+.zip-container label{
+	color: #FFF;
+	font-size: 1.1em;
+}

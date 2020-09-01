@@ -8,7 +8,6 @@ const pressureElement = document.querySelector(".pressure p");
 const humidityElement = document.querySelector(".humidity p");
 const windSpeedElement = document.querySelector(".windSpeed p");
 
-
 const KELVIN = 273;
 
 const weatherData = {};
@@ -17,6 +16,26 @@ const key = config.MY_KEY;
 
 weatherData.temperature ={ //store default 'unit' for temperature in weatherData.
 	unit : "celsius"
+}
+
+//GET ZIP CODE ENTERED IN THE index.html
+function zipcode(zipFromUser){
+	var form = document.getElementById('zipcode');
+	var zipFromUser = form.elements.zipcodefield.value;
+
+	if (zipFromUser === undefined){
+		notificationElement.style.display = "block";
+		notificationElement.innerHTML = `<p>Zip Code is not valid.</p>`;
+	}else{
+		getWeatherWithZip(zipFromUser);
+	}
+}
+
+function getWeatherWithZip(zip){
+	let api_Zip = `http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${key}`;
+	console.log(api_Zip);
+
+	fetchApiData(api_Zip);
 }
 
 
@@ -48,7 +67,12 @@ function getWeather(latitude, longitude){
 	let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
 	console.log(api);
 
-	fetch(api)
+	fetchApiData(api);
+}
+
+//FETCH API DATA -- gets 'api_Zip' from getWeatherWithZip() or 'api' from 'getWeather()'
+function fetchApiData(api_data){
+	fetch(api_data)
 		.then(function(response){
 			let data = response.json();
 			return data;
