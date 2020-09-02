@@ -35,16 +35,14 @@ body{
 }
 
 .notification{
-	background-color: #f8d7da;
-	display: none;
+	background-color: #f6b163;
+	padding: 3px;
 }
 
 .notification p{
 	color: #FFF;
-	font-size: 1.2em;
-	margin: 0;
+	font-size: 0.85em;
 	text-align: center;
-	padding: 10px 0;
 
 }
 
@@ -155,6 +153,12 @@ body{
 	text-align: center;
 }
 
+.zipcode-box-container{
+
+}
+
+
+
 .zip-container form{
 	padding: 20px;
 }
@@ -165,9 +169,6 @@ body{
 }
 
 .country-container{
-
-}
-
-.country-container option{
-	
+	margin: 10px auto;
+	width: 100%
 }

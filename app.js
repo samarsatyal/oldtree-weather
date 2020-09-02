@@ -28,12 +28,7 @@ function setZipCode(zipFromUser, countryCodeFromUser){
 
 	console.log(zipFromUser, ccFromUser);
 
-	if (zipFromUser === undefined){
-		notificationElement.style.display = "block";
-		notificationElement.innerHTML = `<p>Zip Code is not valid.</p>`;
-	}else{
-		getWeatherWithZip(zipFromUser, ccFromUser);
-	}
+	getWeatherWithZip(zipFromUser, ccFromUser);
 }
 
 function getWeatherWithZip(zip, countrycodeonly){
@@ -42,7 +37,6 @@ function getWeatherWithZip(zip, countrycodeonly){
 
 	fetchApiData(api_Zip);
 }
-
 
 //GEOLOCATION CHECK:
 //1. First obtain the geolocation of the user's device.
@@ -75,12 +69,19 @@ function getWeather(latitude, longitude){
 	fetchApiData(api);
 }
 
+
 //FETCH API DATA -- gets 'api_Zip' from getWeatherWithZip() or 'api' from 'getWeather()'
 function fetchApiData(api_data){
 	fetch(api_data)
 		.then(function(response){
 			let data = response.json();
-			return data;
+
+			if(!response.ok){
+				throwZipCodeError();
+			}else{
+				notificationElement.innerHTML = null;
+				return data;
+			}
 		})
 
 		.then(function(data){
@@ -93,9 +94,16 @@ function fetchApiData(api_data){
 			weatherData.humidity = data.main.humidity;
 			weatherData.windSpeed = data.wind.speed;
 		})
+
 		.then(function(){
 			displayWeatherForUser();
 		});
+		
+}
+
+function throwZipCodeError(){
+	notificationElement.style.display = "block";
+	notificationElement.innerHTML = `<p>Not a valid zip code.</p>`;
 }
 
 
