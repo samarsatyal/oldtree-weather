@@ -19,20 +19,15 @@ weatherData.temperature ={ //store default 'unit' for temperature in weatherData
 }
 
 //GET ZIP CODE ENTERED IN THE index.html
-function setZipCode(zipFromUser, countryCodeFromUser){
-	var form = document.getElementById('zipcode');
+function setZipCode(zipFromUser){
+	var form = document.getElementById('zipCodeForm');
 	var zipFromUser = form.elements.zipcodefield.value; //Zip code value entered by user in index.html
 
-	var cc = document.getElementById('cntrycds');
-	var ccFromUser = form.elements.cntrycds.value; //Gets the country code from the country name selected by user in index.html (Example: NP for Nepal(NP))
-
-	console.log(zipFromUser, ccFromUser);
-
-	getWeatherWithZip(zipFromUser, ccFromUser);
+	getWeatherWithZip(zipFromUser);
 }
 
-function getWeatherWithZip(zip, countrycodeonly){
-	let api_Zip = `http://api.openweathermap.org/data/2.5/weather?zip=${zip},${countrycodeonly}&appid=${key}`;
+function getWeatherWithZip(zip){
+	let api_Zip = `http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${key}`;
 	console.log(api_Zip);
 
 	fetchApiData(api_Zip);
@@ -103,7 +98,7 @@ function fetchApiData(api_data){
 
 function throwZipCodeError(){
 	notificationElement.style.display = "block";
-	notificationElement.innerHTML = `<p>Not a valid zip code.</p>`;
+	notificationElement.innerHTML = `<p>Incorrect Zip Code</p>`;
 }
 
 
